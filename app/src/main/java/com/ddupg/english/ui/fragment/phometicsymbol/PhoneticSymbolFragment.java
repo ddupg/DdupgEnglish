@@ -4,50 +4,77 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.Fragment;
 
 import com.ddupg.english.R;
-import com.ddupg.english.ui.TopbarListener;
-import com.ddupg.english.ui.fragment.ServiceItemFragment;
-import com.qmuiteam.qmui.widget.QMUITopBarLayout;
+import com.ddupg.english.ui.fragment.Nameable;
+import com.qmuiteam.qmui.widget.textview.QMUISpanTouchFixTextView;
 
-import java.util.function.Consumer;
+import lombok.Getter;
 
-public class PhoneticSymbolFragment extends ServiceItemFragment {
+public class PhoneticSymbolFragment extends Fragment implements Nameable {
 
-  private static final String NAME = "Phonetic Symbol";
+  @Getter
+  private PhoneticSymbolAdapter phoneticSymbol;
+
+  private Button forwardBtn;
+
+  private Button backBtn;
+
+  private QMUISpanTouchFixTextView textView;
 
   @Nullable
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-    return inflater.inflate(R.layout.fragment_phonetic_symbol, container, false);
+    View root = inflater.inflate(R.layout.fragment_phonetic_symbol, container, false);
+    forwardBtn = root.findViewById(R.id.phonetic_symbol_forward);
+    forwardBtn.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        changePhoneticSymbol(phoneticSymbol.getFormer());
+      }
+    });
+    backBtn = root.findViewById(R.id.phonetic_symbol_backward);
+    backBtn.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        changePhoneticSymbol(phoneticSymbol.getLatter());
+      }
+    });
+    textView = root.findViewById(R.id.phonetic_symbol_text);
+    refreshView();
+    return root;
   }
 
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-    changeTopbar();
-    TextView text = view.findViewById(R.id.service_text);
-    text.setText(NAME);
+    super.onViewCreated(view, savedInstanceState);
+    refreshView();
   }
 
-  private void changeTopbar() {
-    FragmentActivity activity = getActivity();
-    if (activity instanceof TopbarListener) {
-      ((TopbarListener) activity).onTopbarChange(new Consumer<QMUITopBarLayout>() {
-        @Override
-        public void accept(QMUITopBarLayout topbar) {
-          topbar.setTitle(NAME);
-        }
-      });
+  public void changePhoneticSymbol(PhoneticSymbolAdapter phoneticSymbol) {
+    this.phoneticSymbol = phoneticSymbol;
+    refreshView();
+  }
+
+  private void refreshView() {
+    if (forwardBtn != null) {
+      forwardBtn.setEnabled(phoneticSymbol.hasFormer());
+    }
+    if (backBtn != null) {
+      backBtn.setEnabled(phoneticSymbol.hasLatter());
+    }
+    if (textView != null) {
+      textView.setText(name() + " " + phoneticSymbol.getName() + " " + phoneticSymbol.getDetail());
     }
   }
 
   @Override
-  public String getName() {
-    return NAME;
+  public String name() {
+    return "PhoneticSymbolFragment";
   }
 }

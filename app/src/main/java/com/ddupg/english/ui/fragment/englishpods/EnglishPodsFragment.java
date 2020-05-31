@@ -12,19 +12,19 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.ddupg.english.R;
 import com.ddupg.english.ui.TopbarListener;
-import com.ddupg.english.ui.fragment.ServiceItemFragment;
+import com.ddupg.english.ui.fragment.NameableFragment;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
 
 import java.util.function.Consumer;
 
-public class EnglishPodsFragment extends ServiceItemFragment {
+public class EnglishPodsFragment extends NameableFragment {
 
   private static final String NAME = "EnglishPods";
 
   @Nullable
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-    return inflater.inflate(R.layout.fragment_english_pods, container, false);
+    return inflater.inflate(R.layout.fragment_english_pods_service, container, false);
   }
 
   @Override
@@ -47,7 +47,7 @@ public class EnglishPodsFragment extends ServiceItemFragment {
   }
 
   @Override
-  public String getName() {
+  public String name() {
     return NAME;
   }
 }

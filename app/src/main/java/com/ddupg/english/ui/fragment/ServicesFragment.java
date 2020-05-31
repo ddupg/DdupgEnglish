@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ddupg.english.R;
-import com.ddupg.english.ui.ServicesAdapter;
 import com.ddupg.english.ui.TopbarListener;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
 
@@ -35,7 +34,7 @@ public class ServicesFragment extends Fragment {
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
     View root = inflater.inflate(R.layout.fragment_services, container, false);
-    RecyclerView serviceList = root.findViewById(R.id.serviceList);
+    RecyclerView serviceList = root.findViewById(R.id.service_list);
     servicesAdapter = new ServicesAdapter();
     serviceList.setAdapter(servicesAdapter);
     serviceList.setLayoutManager(new LinearLayoutManager(getContext()));

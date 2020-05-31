@@ -1,4 +1,4 @@
-package com.ddupg.english.ui;
+package com.ddupg.english.ui.fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,13 +6,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ddupg.english.R;
 import com.ddupg.english.ui.fragment.englishpods.EnglishPodsFragment;
-import com.ddupg.english.ui.fragment.phometicsymbol.PhoneticSymbolFragment;
-import com.ddupg.english.ui.fragment.ServiceItemFragment;
+import com.ddupg.english.ui.fragment.phometicsymbol.PhoneticSymbolServiceFragment;
 import com.ddupg.english.ui.fragment.words.WordsFragment;
 
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
 
   public ServicesAdapter() {
     serviceItems = new ArrayList<>();
-    serviceItems.add(new ServiceItem(new PhoneticSymbolFragment()));
+    serviceItems.add(new ServiceItem(new PhoneticSymbolServiceFragment()));
     serviceItems.add(new ServiceItem(new WordsFragment()));
     serviceItems.add(new ServiceItem(new EnglishPodsFragment()));
   }
@@ -42,13 +42,13 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
   @Override
   public void onBindViewHolder(@NonNull final ServiceViewHolder holder, int position) {
     final ServiceItem service = serviceItems.get(position);
-    holder.serviceName.setText(service.fragment.getName());
+    holder.serviceName.setText(service.fragment.name());
     holder.serviceName.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
         activity.getSupportFragmentManager().beginTransaction()
             .replace(R.id.container, service.fragment)
-            .addToBackStack(service.fragment.getName())
+            .addToBackStack(service.fragment.name())
             .commit();
       }
     });
@@ -75,9 +75,9 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
 
   class ServiceItem {
 
-    private ServiceItemFragment fragment;
+    private NameableFragment fragment;
 
-    public ServiceItem(ServiceItemFragment fragment) {
+    public ServiceItem(NameableFragment fragment) {
       this.fragment = fragment;
     }
   }

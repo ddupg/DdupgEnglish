@@ -10,10 +10,10 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ddupg.english.R;
-import com.ddupg.english.ui.fragment.EnglishPodsFragment;
-import com.ddupg.english.ui.fragment.PhoneticSymbolFragment;
+import com.ddupg.english.ui.fragment.englishpods.EnglishPodsFragment;
+import com.ddupg.english.ui.fragment.phometicsymbol.PhoneticSymbolFragment;
 import com.ddupg.english.ui.fragment.ServiceItemFragment;
-import com.ddupg.english.ui.fragment.WordFragment;
+import com.ddupg.english.ui.fragment.words.WordsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
   public ServicesAdapter() {
     serviceItems = new ArrayList<>();
     serviceItems.add(new ServiceItem(new PhoneticSymbolFragment()));
-    serviceItems.add(new ServiceItem(new WordFragment()));
+    serviceItems.add(new ServiceItem(new WordsFragment()));
     serviceItems.add(new ServiceItem(new EnglishPodsFragment()));
   }
 

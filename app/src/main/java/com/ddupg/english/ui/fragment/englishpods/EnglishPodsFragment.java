@@ -1,4 +1,4 @@
-package com.ddupg.english.ui.fragment;
+package com.ddupg.english.ui.fragment.englishpods;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,18 +12,19 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.ddupg.english.R;
 import com.ddupg.english.ui.TopbarListener;
+import com.ddupg.english.ui.fragment.ServiceItemFragment;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
 
 import java.util.function.Consumer;
 
-public class PhoneticSymbolFragment extends ServiceItemFragment {
+public class EnglishPodsFragment extends ServiceItemFragment {
 
-  private static final String NAME = "Phonetic Symbol";
+  private static final String NAME = "EnglishPods";
 
   @Nullable
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-    return inflater.inflate(R.layout.fragment_phonetic_symbol, container, false);
+    return inflater.inflate(R.layout.fragment_english_pods, container, false);
   }
 
   @Override

@@ -1,9 +1,11 @@
 package com.ddupg.english.ui;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.ddupg.english.R;
 import com.ddupg.english.ui.fragment.ServicesFragment;
+import com.qmuiteam.qmui.alpha.QMUIAlphaImageButton;
 import com.qmuiteam.qmui.arch.QMUIFragmentActivity;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
@@ -24,7 +26,18 @@ public class MainActivity extends QMUIFragmentActivity implements TopbarListener
     setContentView(R.layout.activity_main);
     ButterKnife.bind(this);
     QMUIStatusBarHelper.translucent(this);
-    getSupportFragmentManager().beginTransaction().add(R.id.container, new ServicesFragment(), ServicesFragment.TAG).commit();
+
+    QMUIAlphaImageButton button = topbar.addLeftBackImageButton();
+    button.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        onBackPressed();
+      }
+    });
+
+    getSupportFragmentManager().beginTransaction()
+        .add(R.id.container, new ServicesFragment(), ServicesFragment.TAG)
+        .commit();
   }
 
   @Override

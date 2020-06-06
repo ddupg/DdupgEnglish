@@ -1,4 +1,4 @@
-package com.ddupg.english.phometicsymbol;
+package com.ddupg.english.phometic;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ddupg.english.R;
@@ -27,34 +26,34 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class PhoneticSymbolServiceFragment extends NameableFragment implements PhoneticContract.View {
+public class PhoneticServiceFragment extends NameableFragment implements PhoneticSignContract.View {
 
-  private static final String NAME = "Phonetic Symbol";
+  private static final String NAME = "Phonetic Sign";
 
   private Unbinder unbinder;
 
-  PhoneticSymbolFragment phoneticSymbolFragment;
+  PhoneticSignFragment phoneticSignFragment;
 
   @BindView(R.id.phonetic_list)
   RecyclerView phoneticListView;
 
-  PhoneticContract.Presenter presenter;
+  PhoneticSignContract.Presenter presenter;
 
   private ListAdapter listAdapter;
 
-  private List<PhoneticSymbolAdapter> resourceChain = Collections.EMPTY_LIST;
+  private List<PhoneticSignAdapter> resourceChain = Collections.EMPTY_LIST;
 
   @Nullable
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-    View root = inflater.inflate(R.layout.fragment_phonetic_symbol_service, container, false);
+    View root = inflater.inflate(R.layout.fragment_phonetic_sign_service, container, false);
     unbinder = ButterKnife.bind(this, root);
     listAdapter = new ListAdapter();
     phoneticListView.setAdapter(listAdapter);
 
-    new PhoneticSymbolPresenter(getContext(), this, SchedulerProvider.getInstance());
+    new PhoneticPresenter(getContext(), this, SchedulerProvider.getInstance());
 
-    phoneticSymbolFragment = new PhoneticSymbolFragment();
+    phoneticSignFragment = new PhoneticSignFragment();
     initView();
     return root;
   }
@@ -83,12 +82,12 @@ public class PhoneticSymbolServiceFragment extends NameableFragment implements P
   }
 
   @Override
-  public void show(List<ResourcefulPhoneticSymbol> phoneticSymbols) {
-    List<PhoneticSymbolAdapter> chain = new ArrayList<>();
-    phoneticSymbols.stream().map(PhoneticSymbolAdapter::new).forEach(a -> a.addToChain(chain));
+  public void show(List<ResourcefulPhoneticSign> phoneticSigns) {
+    List<PhoneticSignAdapter> chain = new ArrayList<>();
+    phoneticSigns.stream().map(PhoneticSignAdapter::new).forEach(a -> a.addToChain(chain));
     this.resourceChain = chain;
     listAdapter.notifyDataSetChanged();
-    Log.i(getTag(), "resource size: " + phoneticSymbols.size());
+    Log.i(getTag(), "resource size: " + phoneticSigns.size());
   }
 
   @Override
@@ -97,7 +96,7 @@ public class PhoneticSymbolServiceFragment extends NameableFragment implements P
   }
 
   @Override
-  public void setPresenter(PhoneticContract.Presenter presenter) {
+  public void setPresenter(PhoneticSignContract.Presenter presenter) {
     this.presenter = presenter;
   }
 
@@ -128,15 +127,15 @@ public class PhoneticSymbolServiceFragment extends NameableFragment implements P
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder h, int position) {
-      PhoneticSymbolAdapter phonetic = resourceChain.get(position);
+      PhoneticSignAdapter phonetic = resourceChain.get(position);
       ListItemViewHolder holder = (ListItemViewHolder) h;
       holder.phoneticCardShow.setText(phonetic.getResource().getShow());
       StackLabel tagLabels = holder.itemView.findViewById(R.id.tag_labels);
       tagLabels.setLabels(phonetic.getResource().getTags());
       holder.itemView.setOnClickListener(v -> {
-        phoneticSymbolFragment.changePhoneticSymbol(phonetic);
+        phoneticSignFragment.changePhoneticSign(phonetic);
         getActivity().getSupportFragmentManager().beginTransaction()
-            .replace(R.id.container, phoneticSymbolFragment, phoneticSymbolFragment.getTag())
+            .replace(R.id.container, phoneticSignFragment, phoneticSignFragment.getTag())
             .addToBackStack(NAME)
             .commit();
       });

@@ -14,7 +14,7 @@
         <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:id="@+id/phonetic_symbol_forward"
+            android:id="@+id/phonetic_sign_forward"
             android:layout_gravity="left"
             android:padding="5dp"
             android:textSize="25dp"
@@ -27,7 +27,7 @@
         <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:id="@+id/phonetic_symbol_backward"
+            android:id="@+id/phonetic_sign_backward"
             android:layout_gravity="right"
             android:padding="5dp"
             android:textSize="25dp"
@@ -42,7 +42,7 @@
     <com.qmuiteam.qmui.widget.textview.QMUISpanTouchFixTextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/phonetic_symbol_text"
+        android:id="@+id/phonetic_sign_text"
         android:textSize="80dp"
         />
 

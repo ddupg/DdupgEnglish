@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ddupg.english.R;
 import com.ddupg.english.common.NameableFragment;
 import com.ddupg.english.englishpods.EnglishPodsFragment;
-import com.ddupg.english.phometicsymbol.PhoneticSymbolServiceFragment;
+import com.ddupg.english.phometic.PhoneticServiceFragment;
 import com.ddupg.english.words.WordsFragment;
 
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
 
   public ServicesAdapter() {
     serviceItems = new ArrayList<>();
-    serviceItems.add(new ServiceItem(new PhoneticSymbolServiceFragment()));
+    serviceItems.add(new ServiceItem(new PhoneticServiceFragment()));
     serviceItems.add(new ServiceItem(new WordsFragment()));
     serviceItems.add(new ServiceItem(new EnglishPodsFragment()));
   }

@@ -1,4 +1,4 @@
-package com.ddupg.english.phometicsymbol;
+package com.ddupg.english.phometic;
 
 import android.content.Context;
 
@@ -9,24 +9,24 @@ import com.ddupg.english.util.SchedulerProvider;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.disposables.Disposable;
 
-public class PhoneticSymbolPresenter implements PhoneticContract.Presenter {
+public class PhoneticPresenter implements PhoneticSignContract.Presenter {
 
   private Context context;
 
-  private PhoneticContract.View view;
+  private PhoneticSignContract.View view;
 
   private SchedulerProvider schedulerProvider;
 
-  private PhoneticSymbolRepository repository;
+  private PhoneticRepository repository;
 
   @NonNull
   private CompositeDisposable compositeDisposable;
 
-  public PhoneticSymbolPresenter(Context context, PhoneticContract.View view, SchedulerProvider schedulerProvider) {
+  public PhoneticPresenter(Context context, PhoneticSignContract.View view, SchedulerProvider schedulerProvider) {
     this.context = context;
     this.view = view;
     this.schedulerProvider = schedulerProvider;
-    repository = PhoneticSymbolRepository.getInstance(context);
+    repository = PhoneticRepository.getInstance(context);
     compositeDisposable = new CompositeDisposable();
     view.setPresenter(this);
   }
@@ -49,7 +49,7 @@ public class PhoneticSymbolPresenter implements PhoneticContract.Presenter {
   @Override
   public void load() {
     compositeDisposable.clear();
-    Disposable disposable = repository.loadResourcefulPhoneticSymbols()
+    Disposable disposable = repository.loadResourcefulPhoneticSigns()
         .subscribeOn(schedulerProvider.io())
         .observeOn(schedulerProvider.ui())
         .subscribe(

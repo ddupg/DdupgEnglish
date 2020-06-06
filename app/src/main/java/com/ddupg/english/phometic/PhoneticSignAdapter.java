@@ -1,18 +1,18 @@
-package com.ddupg.english.phometicsymbol;
+package com.ddupg.english.phometic;
 
 import java.util.List;
 
-public class PhoneticSymbolAdapter {
+public class PhoneticSignAdapter {
 
-  private List<PhoneticSymbolAdapter> chain;
+  private List<PhoneticSignAdapter> chain;
 
-  private ResourcefulPhoneticSymbol resource;
+  private ResourcefulPhoneticSign resource;
 
-  public PhoneticSymbolAdapter(ResourcefulPhoneticSymbol resource) {
+  public PhoneticSignAdapter(ResourcefulPhoneticSign resource) {
     this.resource = resource;
   }
 
-  public PhoneticSymbolAdapter addToChain(List<PhoneticSymbolAdapter> chain) {
+  public PhoneticSignAdapter addToChain(List<PhoneticSignAdapter> chain) {
     this.chain = chain;
     chain.add(this);
     return this;
@@ -26,21 +26,21 @@ public class PhoneticSymbolAdapter {
     return resource.getId() < chain.size() - 1;
   }
 
-  public PhoneticSymbolAdapter getFormer() {
+  public PhoneticSignAdapter getFormer() {
     if (!hasFormer()) {
       throw new RuntimeException("no the former");
     }
     return chain.get(resource.getId() - 1);
   }
 
-  public PhoneticSymbolAdapter getLatter() {
+  public PhoneticSignAdapter getLatter() {
     if (!hasLatter()) {
       throw new RuntimeException("no the latter");
     }
     return chain.get(resource.getId() + 1);
   }
 
-  public ResourcefulPhoneticSymbol getResource() {
+  public ResourcefulPhoneticSign getResource() {
     return resource;
   }
 }

@@ -1,19 +1,19 @@
-package com.ddupg.english.phometicsymbol;
+package com.ddupg.english.phometic;
 
 import java.util.List;
 
 import lombok.Data;
 
 @Data
-public class ResourcefulPhoneticSymbol {
+public class ResourcefulPhoneticSign {
 
-  private RawPhoneticSymbol raw;
+  private RawPhoneticSign raw;
 
-  private PhoneticSymbolRepository repository;
+  private PhoneticRepository repository;
 
   public List<String> tags;
 
-  public ResourcefulPhoneticSymbol(RawPhoneticSymbol raw, PhoneticSymbolRepository repository) {
+  public ResourcefulPhoneticSign(RawPhoneticSign raw, PhoneticRepository repository) {
     this.raw = raw;
     this.repository = repository;
     tags = repository.convertTags(raw.getTags());

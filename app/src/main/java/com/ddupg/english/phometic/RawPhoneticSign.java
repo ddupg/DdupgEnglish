@@ -1,11 +1,11 @@
-package com.ddupg.english.phometicsymbol;
+package com.ddupg.english.phometic;
 
 import java.util.List;
 
 import lombok.Data;
 
 @Data
-public class RawPhoneticSymbol {
+public class RawPhoneticSign {
 
   private int id;
 

@@ -1,4 +1,4 @@
-package com.ddupg.english.phometicsymbol;
+package com.ddupg.english.phometic;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,26 +20,26 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import lombok.Getter;
 
-public class PhoneticSymbolFragment extends Fragment implements Nameable {
+public class PhoneticSignFragment extends Fragment implements Nameable {
 
   private Unbinder unbinder;
 
   @Getter
-  private PhoneticSymbolAdapter phoneticSymbol;
+  private PhoneticSignAdapter phoneticSign;
 
-  @BindView(R.id.phonetic_symbol_forward)
+  @BindView(R.id.phonetic_sign_forward)
   Button forwardBtn;
 
-  @BindView(R.id.phonetic_symbol_backward)
+  @BindView(R.id.phonetic_sign_backward)
   Button backBtn;
 
-  @BindView(R.id.phonetic_symbol_text)
+  @BindView(R.id.phonetic_sign_text)
   QMUISpanTouchFixTextView textView;
 
   @Nullable
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-    View root = inflater.inflate(R.layout.fragment_phonetic_symbol, container, false);
+    View root = inflater.inflate(R.layout.fragment_phonetic_sign, container, false);
     unbinder = ButterKnife.bind(this, root);
     refreshView();
     return root;
@@ -57,35 +57,35 @@ public class PhoneticSymbolFragment extends Fragment implements Nameable {
     refreshView();
   }
 
-  public void changePhoneticSymbol(PhoneticSymbolAdapter phoneticSymbol) {
-    this.phoneticSymbol = phoneticSymbol;
+  public void changePhoneticSign(PhoneticSignAdapter phoneticSign) {
+    this.phoneticSign = phoneticSign;
     refreshView();
   }
 
   private void refreshView() {
     if (forwardBtn != null) {
-      forwardBtn.setEnabled(phoneticSymbol.hasFormer());
+      forwardBtn.setEnabled(phoneticSign.hasFormer());
     }
     if (backBtn != null) {
-      backBtn.setEnabled(phoneticSymbol.hasLatter());
+      backBtn.setEnabled(phoneticSign.hasLatter());
     }
     if (textView != null) {
-      textView.setText(phoneticSymbol.getResource().getShow());
+      textView.setText(phoneticSign.getResource().getShow());
     }
   }
 
-  @OnClick(R.id.phonetic_symbol_forward)
+  @OnClick(R.id.phonetic_sign_forward)
   public void onForwardBtnClick() {
-    changePhoneticSymbol(phoneticSymbol.getFormer());
+    changePhoneticSign(phoneticSign.getFormer());
   }
 
-  @OnClick(R.id.phonetic_symbol_backward)
+  @OnClick(R.id.phonetic_sign_backward)
   public void onBackBtnClick() {
-    changePhoneticSymbol(phoneticSymbol.getLatter());
+    changePhoneticSign(phoneticSign.getLatter());
   }
 
   @Override
   public String name() {
-    return "PhoneticSymbolFragment";
+    return "PhoneticSignFragment";
   }
 }

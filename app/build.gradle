@@ -63,5 +63,5 @@ dependencies {
 
     implementation 'com.google.android:flexbox:2.0.1'
 
-    implementation 'com.kongzue.stacklabel:stacklabelview:1.1.0'
+    implementation 'com.kongzue.stacklabel:stacklabelview:1.1.9'
 }

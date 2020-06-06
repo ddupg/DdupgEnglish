@@ -1,4 +1,4 @@
-package com.ddupg.english.ui.fragment;
+package com.ddupg.english.main;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,9 +10,10 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ddupg.english.R;
-import com.ddupg.english.ui.fragment.englishpods.EnglishPodsFragment;
-import com.ddupg.english.ui.fragment.phometicsymbol.PhoneticSymbolServiceFragment;
-import com.ddupg.english.ui.fragment.words.WordsFragment;
+import com.ddupg.english.common.NameableFragment;
+import com.ddupg.english.englishpods.EnglishPodsFragment;
+import com.ddupg.english.phometicsymbol.PhoneticSymbolServiceFragment;
+import com.ddupg.english.words.WordsFragment;
 
 import java.util.ArrayList;
 import java.util.List;

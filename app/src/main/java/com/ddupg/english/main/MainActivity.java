@@ -1,10 +1,8 @@
-package com.ddupg.english.ui;
+package com.ddupg.english.main;
 
 import android.os.Bundle;
-import android.view.View;
 
 import com.ddupg.english.R;
-import com.ddupg.english.ui.fragment.ServicesFragment;
 import com.qmuiteam.qmui.alpha.QMUIAlphaImageButton;
 import com.qmuiteam.qmui.arch.QMUIFragmentActivity;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
@@ -28,12 +26,7 @@ public class MainActivity extends QMUIFragmentActivity implements TopbarListener
     QMUIStatusBarHelper.translucent(this);
 
     QMUIAlphaImageButton button = topbar.addLeftBackImageButton();
-    button.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        onBackPressed();
-      }
-    });
+    button.setOnClickListener(v -> onBackPressed());
 
     getSupportFragmentManager().beginTransaction()
         .add(R.id.container, new ServicesFragment(), ServicesFragment.TAG)

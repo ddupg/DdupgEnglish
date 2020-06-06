@@ -1,0 +1,448 @@
+{
+  "tags": {
+    "0": "元音",
+    "1": "前元音",
+    "2": "中元音",
+    "3": "后元音",
+    "4": "双元音",
+    "5": "辅音"
+  },
+  "phonetic": [
+    {
+      "show": "/i/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1RW411J7vC",
+      "tags": [
+        0,
+        1
+      ]
+    },
+    {
+      "show": "/ɪ/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1RW411J7vC",
+      "tags": [
+        0,
+        1
+      ]
+    },
+    {
+      "show": "/l/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1MW411n7LS",
+      "tags": [
+        5
+      ]
+    },
+    {
+      "show": "/r/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1MW411n7LS",
+      "tags": [
+        5
+      ]
+    },
+    {
+      "show": "/ɛ/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1AW411E7eS",
+      "tags": [
+        0,
+        1
+      ]
+    },
+    {
+      "show": "/æ/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1AW411E7eS",
+      "tags": [
+        0,
+        1
+      ]
+    },
+    {
+      "show": "/ʌ/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV17W411E7Ce",
+      "tags": [
+        0,
+        2
+      ]
+    },
+    {
+      "show": "/ə/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV17W411E7Ce",
+      "tags": [
+        0,
+        2
+      ]
+    },
+    {
+      "show": "/a/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1UW411E7L5",
+      "tags": [
+        0,
+        3
+      ]
+    },
+    {
+      "show": "/ɔ/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1UW411E7L5",
+      "tags": [
+        0,
+        3
+      ]
+    },
+    {
+      "show": "/u/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1PW41177Gr",
+      "tags": [
+        0,
+        3
+      ]
+    },
+    {
+      "show": "/ʊ/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1PW41177Gr",
+      "tags": [
+        0,
+        3
+      ]
+    },
+    {
+      "show": "/ei/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1YW41177vC",
+      "tags": [
+        0,
+        4
+      ]
+    },
+    {
+      "show": "/ai/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1YW41177vC",
+      "tags": [
+        0,
+        4
+      ]
+    },
+    {
+      "show": "/ɔi/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1YW41177vC",
+      "tags": [
+        0,
+        4
+      ]
+    },
+    {
+      "show": "/ou/ ",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1QW41177BN",
+      "tags": [
+        0,
+        4
+      ]
+    },
+    {
+      "show": "/au/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1QW41177BN",
+      "tags": [
+        0,
+        4
+      ]
+    },
+    {
+      "show": "/ɪr/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1FW41147t1",
+      "tags": [
+        0,
+        4
+      ]
+    },
+    {
+      "show": "/ər/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1FW41147t1",
+      "tags": [
+        0,
+        4
+      ]
+    },
+    {
+      "show": "/ɛr/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1FW41147t1",
+      "tags": [
+        0,
+        4
+      ]
+    },
+    {
+      "show": "/ar/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1FW41147t1",
+      "tags": [
+        0,
+        4
+      ]
+    },
+    {
+      "show": "/ʊr/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1FW41147t1",
+      "tags": [
+        0,
+        4
+      ]
+    },
+    {
+      "show": "/t/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1FW41147t1",
+      "tags": [
+        0,
+        4
+      ]
+    },
+    {
+      "show": "/d/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1FW41147t1",
+      "tags": [
+        0,
+        4
+      ]
+    },
+    {
+      "show": "/k/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1FW41147t1",
+      "tags": [
+        5
+      ]
+    },
+    {
+      "show": "/g/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1FW41147t1",
+      "tags": [
+        5
+      ]
+    },
+    {
+      "show": "/p/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1FW41147t1",
+      "tags": [
+        5
+      ]
+    },
+    {
+      "show": "/b/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1FW41147t1",
+      "tags": [
+        5
+      ]
+    },
+    {
+      "show": "/s/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1RW41147jp",
+      "tags": [
+        5
+      ]
+    },
+    {
+      "show": "/z/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1RW41147jp",
+      "tags": [
+        5
+      ]
+    },
+    {
+      "show": "/θ/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1RW41147jp",
+      "tags": [
+        5
+      ]
+    },
+    {
+      "show": "/ð/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1RW41147jp",
+      "tags": [
+        5
+      ]
+    },
+    {
+      "show": "/ʃ/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1yW411s7Zj",
+      "tags": [
+        5
+      ]
+    },
+    {
+      "show": "/ʒ/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1yW411s7Zj",
+      "tags": [
+        5
+      ]
+    },
+    {
+      "show": "/tʃ/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1yW411s7Zj",
+      "tags": [
+        5
+      ]
+    },
+    {
+      "show": "/dʒ/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1yW411s7Zj",
+      "tags": [
+        5
+      ]
+    },
+    {
+      "show": "/v/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1ZW411x7Sc",
+      "tags": [
+        5
+      ]
+    },
+    {
+      "show": "/f/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1ZW411x7Sc",
+      "tags": [
+        5
+      ]
+    },
+    {
+      "show": "/j/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1GW411s78z",
+      "tags": [
+        5
+      ]
+    },
+    {
+      "show": "/w/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1GW411s78z",
+      "tags": [
+        5
+      ]
+    },
+    {
+      "show": "/h/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1GW411s78z",
+      "tags": [
+        5
+      ]
+    },
+    {
+      "show": "/m/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV19W411g7HW",
+      "tags": [
+        5
+      ]
+    },
+    {
+      "show": "/n/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV19W411g7HW",
+      "tags": [
+        5
+      ]
+    },
+    {
+      "show": "/ŋ/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV19W411g7HW",
+      "tags": [
+        5
+      ]
+    },
+    {
+      "show": "/tr/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1rW411M7Ft",
+      "tags": [
+        5
+      ]
+    },
+    {
+      "show": "/dr/",
+      "audio": "",
+      "pic": "",
+      "video": "https://www.bilibili.com/video/BV1rW411M7Ft",
+      "tags": [
+        5
+      ]
+    }
+  ]
+}

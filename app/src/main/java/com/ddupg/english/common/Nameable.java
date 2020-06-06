@@ -1,4 +1,4 @@
-package com.ddupg.english.ui.fragment;
+package com.ddupg.english.common;
 
 public interface Nameable {
   String name();

@@ -1,4 +1,4 @@
-package com.ddupg.english.ui.fragment.englishpods;
+package com.ddupg.english.englishpods;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,11 +11,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
 import com.ddupg.english.R;
-import com.ddupg.english.ui.TopbarListener;
-import com.ddupg.english.ui.fragment.NameableFragment;
-import com.qmuiteam.qmui.widget.QMUITopBarLayout;
-
-import java.util.function.Consumer;
+import com.ddupg.english.main.TopbarListener;
+import com.ddupg.english.common.NameableFragment;
 
 public class EnglishPodsFragment extends NameableFragment {
 
@@ -37,12 +34,7 @@ public class EnglishPodsFragment extends NameableFragment {
   private void changeTopbar() {
     FragmentActivity activity = getActivity();
     if (activity instanceof TopbarListener) {
-      ((TopbarListener) activity).onTopbarChange(new Consumer<QMUITopBarLayout>() {
-        @Override
-        public void accept(QMUITopBarLayout topbar) {
-          topbar.setTitle(NAME);
-        }
-      });
+      ((TopbarListener) activity).onTopbarChange(topbar -> topbar.setTitle(NAME));
     }
   }
 

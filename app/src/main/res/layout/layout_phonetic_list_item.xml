@@ -1,0 +1,42 @@
+<androidx.cardview.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardBackgroundColor="#FFFFFF"
+    card_view:cardCornerRadius="2dp"
+    card_view:cardElevation="2dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginBottom="10dp"
+    android:clickable="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/phonetic_card_show"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:textColor="#333333"
+            android:gravity="left"
+            android:textSize="25dp"
+            android:text="/a/"
+            />
+
+        <com.kongzue.stacklabelview.StackLabel xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/tag_labels"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:textColor="#e6000000"
+            app:itemMargin="4dp"
+            app:paddingHorizontal="12dp"
+            app:paddingVertical="8dp"
+            app:deleteButton="false"
+            app:textSize="12dp"
+            />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

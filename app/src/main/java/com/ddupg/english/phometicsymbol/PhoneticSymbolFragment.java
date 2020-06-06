@@ -1,4 +1,4 @@
-package com.ddupg.english.ui.fragment.phometicsymbol;
+package com.ddupg.english.phometicsymbol;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,43 +11,44 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.ddupg.english.R;
-import com.ddupg.english.ui.fragment.Nameable;
+import com.ddupg.english.common.Nameable;
 import com.qmuiteam.qmui.widget.textview.QMUISpanTouchFixTextView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 import lombok.Getter;
 
 public class PhoneticSymbolFragment extends Fragment implements Nameable {
 
+  private Unbinder unbinder;
+
   @Getter
   private PhoneticSymbolAdapter phoneticSymbol;
 
-  private Button forwardBtn;
+  @BindView(R.id.phonetic_symbol_forward)
+  Button forwardBtn;
 
-  private Button backBtn;
+  @BindView(R.id.phonetic_symbol_backward)
+  Button backBtn;
 
-  private QMUISpanTouchFixTextView textView;
+  @BindView(R.id.phonetic_symbol_text)
+  QMUISpanTouchFixTextView textView;
 
   @Nullable
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
     View root = inflater.inflate(R.layout.fragment_phonetic_symbol, container, false);
-    forwardBtn = root.findViewById(R.id.phonetic_symbol_forward);
-    forwardBtn.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        changePhoneticSymbol(phoneticSymbol.getFormer());
-      }
-    });
-    backBtn = root.findViewById(R.id.phonetic_symbol_backward);
-    backBtn.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        changePhoneticSymbol(phoneticSymbol.getLatter());
-      }
-    });
-    textView = root.findViewById(R.id.phonetic_symbol_text);
+    unbinder = ButterKnife.bind(this, root);
     refreshView();
     return root;
+  }
+
+  @Override
+  public void onDestroyView() {
+    super.onDestroyView();
+    unbinder.unbind();
   }
 
   @Override
@@ -69,8 +70,18 @@ public class PhoneticSymbolFragment extends Fragment implements Nameable {
       backBtn.setEnabled(phoneticSymbol.hasLatter());
     }
     if (textView != null) {
-      textView.setText(name() + " " + phoneticSymbol.getName() + " " + phoneticSymbol.getDetail());
+      textView.setText(phoneticSymbol.getResource().getShow());
     }
+  }
+
+  @OnClick(R.id.phonetic_symbol_forward)
+  public void onForwardBtnClick() {
+    changePhoneticSymbol(phoneticSymbol.getFormer());
+  }
+
+  @OnClick(R.id.phonetic_symbol_backward)
+  public void onBackBtnClick() {
+    changePhoneticSymbol(phoneticSymbol.getLatter());
   }
 
   @Override

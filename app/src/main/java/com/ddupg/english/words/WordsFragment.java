@@ -1,50 +1,37 @@
-package com.ddupg.english.ui.fragment;
+package com.ddupg.english.words;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.ddupg.english.R;
-import com.ddupg.english.ui.TopbarListener;
+import com.ddupg.english.main.TopbarListener;
+import com.ddupg.english.common.NameableFragment;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
 
 import java.util.function.Consumer;
 
-public class ServicesFragment extends Fragment {
+public class WordsFragment extends NameableFragment {
 
-  public final static String TAG = ServicesFragment.class.getSimpleName();
-
-  private ServicesAdapter servicesAdapter;
-
-  @Override
-  public void onAttach(@NonNull Context context) {
-    super.onAttach(context);
-  }
+  private static final String NAME = "Words";
 
   @Nullable
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-    View root = inflater.inflate(R.layout.fragment_services, container, false);
-    RecyclerView serviceList = root.findViewById(R.id.service_list);
-    servicesAdapter = new ServicesAdapter();
-    serviceList.setAdapter(servicesAdapter);
-    serviceList.setLayoutManager(new LinearLayoutManager(getContext()));
-    return root;
+    return inflater.inflate(R.layout.fragment_words_service, container, false);
   }
 
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     changeTopbar();
-    servicesAdapter.setActivity(getActivity());
+    TextView text = view.findViewById(R.id.service_word_text);
+    text.setText(NAME);
   }
 
   private void changeTopbar() {
@@ -53,9 +40,14 @@ public class ServicesFragment extends Fragment {
       ((TopbarListener) activity).onTopbarChange(new Consumer<QMUITopBarLayout>() {
         @Override
         public void accept(QMUITopBarLayout topbar) {
-          topbar.setTitle("Ddupg English");
+          topbar.setTitle(NAME);
         }
       });
     }
+  }
+
+  @Override
+  public String name() {
+    return NAME;
   }
 }

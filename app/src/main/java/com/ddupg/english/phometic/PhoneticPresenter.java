@@ -13,7 +13,7 @@ public class PhoneticPresenter implements PhoneticSignContract.Presenter {
 
   private Context context;
 
-  private PhoneticSignContract.View view;
+  private PhoneticSignContract.ListView listView;
 
   private SchedulerProvider schedulerProvider;
 
@@ -22,13 +22,13 @@ public class PhoneticPresenter implements PhoneticSignContract.Presenter {
   @NonNull
   private CompositeDisposable compositeDisposable;
 
-  public PhoneticPresenter(Context context, PhoneticSignContract.View view, SchedulerProvider schedulerProvider) {
+  public PhoneticPresenter(Context context, PhoneticSignContract.ListView listView, SchedulerProvider schedulerProvider) {
     this.context = context;
-    this.view = view;
+    this.listView = listView;
     this.schedulerProvider = schedulerProvider;
     repository = PhoneticRepository.getInstance(context);
     compositeDisposable = new CompositeDisposable();
-    view.setPresenter(this);
+    listView.setPresenter(this);
   }
 
   @Override
@@ -54,9 +54,9 @@ public class PhoneticPresenter implements PhoneticSignContract.Presenter {
         .observeOn(schedulerProvider.ui())
         .subscribe(
             // onNext
-            tasks -> view.show(tasks),
+            tasks -> listView.show(tasks),
             // onError
-            throwable -> view.showError("load resource error" + throwable));
+            throwable -> listView.showError("load resource error" + throwable));
 
     compositeDisposable.add(disposable);
   }

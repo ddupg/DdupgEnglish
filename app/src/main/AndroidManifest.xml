@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ddupg.english" >
+    package="com.ddupg.english">
 
     <application
         android:name=".DdupgEnglishApplication"
@@ -9,16 +9,28 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-
-        <activity android:name=".main.MainActivity" >
+        android:theme="@style/AppTheme">
+        <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".phometic.PhoneticSignActivity">
+            <intent-filter>
+                <action android:name="PhoneticSign" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".words.WordsActivity">
+            <intent-filter>
+                <action android:name="Words" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".pods.PodsActivity">
+            <intent-filter>
+                <action android:name="English Pods" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

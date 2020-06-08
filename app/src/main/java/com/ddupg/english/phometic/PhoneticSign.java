@@ -2,17 +2,17 @@ package com.ddupg.english.phometic;
 
 import java.util.List;
 
-public class PhoneticSignAdapter {
+public class PhoneticSign {
 
-  private List<PhoneticSignAdapter> chain;
+  private List<PhoneticSign> chain;
 
-  private ResourcefulPhoneticSign resource;
+  private PhoneticRepository.ResourcefulPhoneticSign resource;
 
-  public PhoneticSignAdapter(ResourcefulPhoneticSign resource) {
+  public PhoneticSign(PhoneticRepository.ResourcefulPhoneticSign resource) {
     this.resource = resource;
   }
 
-  public PhoneticSignAdapter addToChain(List<PhoneticSignAdapter> chain) {
+  public PhoneticSign addToChain(List<PhoneticSign> chain) {
     this.chain = chain;
     chain.add(this);
     return this;
@@ -26,21 +26,21 @@ public class PhoneticSignAdapter {
     return resource.getId() < chain.size() - 1;
   }
 
-  public PhoneticSignAdapter getFormer() {
+  public PhoneticSign getFormer() {
     if (!hasFormer()) {
       throw new RuntimeException("no the former");
     }
     return chain.get(resource.getId() - 1);
   }
 
-  public PhoneticSignAdapter getLatter() {
+  public PhoneticSign getLatter() {
     if (!hasLatter()) {
       throw new RuntimeException("no the latter");
     }
     return chain.get(resource.getId() + 1);
   }
 
-  public ResourcefulPhoneticSign getResource() {
+  public PhoneticRepository.ResourcefulPhoneticSign getResource() {
     return resource;
   }
 }

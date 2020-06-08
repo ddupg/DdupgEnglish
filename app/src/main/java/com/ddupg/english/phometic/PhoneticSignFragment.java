@@ -11,7 +11,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.ddupg.english.R;
-import com.ddupg.english.common.Nameable;
 import com.qmuiteam.qmui.widget.textview.QMUISpanTouchFixTextView;
 
 import butterknife.BindView;
@@ -20,12 +19,14 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import lombok.Getter;
 
-public class PhoneticSignFragment extends Fragment implements Nameable {
+public class PhoneticSignFragment extends Fragment implements PhoneticSignContract.View {
 
   private Unbinder unbinder;
 
+  private PhoneticSignContract.Presenter presenter;
+
   @Getter
-  private PhoneticSignAdapter phoneticSign;
+  private PhoneticSign phoneticSign;
 
   @BindView(R.id.phonetic_sign_forward)
   Button forwardBtn;
@@ -57,7 +58,7 @@ public class PhoneticSignFragment extends Fragment implements Nameable {
     refreshView();
   }
 
-  public void changePhoneticSign(PhoneticSignAdapter phoneticSign) {
+  public void changePhoneticSign(PhoneticSign phoneticSign) {
     this.phoneticSign = phoneticSign;
     refreshView();
   }
@@ -85,7 +86,12 @@ public class PhoneticSignFragment extends Fragment implements Nameable {
   }
 
   @Override
-  public String name() {
-    return "PhoneticSignFragment";
+  public void show(PhoneticSign sign) {
+
+  }
+
+  @Override
+  public void setPresenter(PhoneticSignContract.Presenter presenter) {
+    this.presenter = presenter;
   }
 }

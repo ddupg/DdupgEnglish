@@ -11,7 +11,7 @@
 ../word
 ..../cet4   ## CET-4 词库
 ..../cet6
-../englishpods
+../pods
 ```
 
 ### 音标资源索引结构

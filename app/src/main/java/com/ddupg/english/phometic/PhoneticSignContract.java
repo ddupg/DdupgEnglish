@@ -7,10 +7,14 @@ import java.util.List;
 
 public interface PhoneticSignContract {
 
-  interface View extends BaseView<Presenter> {
-    void show(List<ResourcefulPhoneticSign> phoneticSigns);
+  interface ListView extends BaseView<Presenter> {
+    void show(List<PhoneticSign> phoneticSigns);
 
     void showError(String msg);
+  }
+
+  interface View extends BaseView<Presenter> {
+    void show(PhoneticSign sign);
   }
 
   interface Presenter extends BasePresenter {

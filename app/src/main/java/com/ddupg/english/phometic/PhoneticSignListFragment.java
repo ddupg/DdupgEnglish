@@ -9,16 +9,13 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ddupg.english.R;
-import com.ddupg.english.common.NameableFragment;
-import com.ddupg.english.main.TopbarListener;
 import com.ddupg.english.util.SchedulerProvider;
 import com.kongzue.stacklabelview.StackLabel;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -26,7 +23,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class PhoneticServiceFragment extends NameableFragment implements PhoneticSignContract.View {
+public class PhoneticSignListFragment extends Fragment implements PhoneticSignContract.ListView {
 
   private static final String NAME = "Phonetic Sign";
 
@@ -41,7 +38,7 @@ public class PhoneticServiceFragment extends NameableFragment implements Phoneti
 
   private ListAdapter listAdapter;
 
-  private List<PhoneticSignAdapter> resourceChain = Collections.EMPTY_LIST;
+  private List<PhoneticSign> chain = Collections.EMPTY_LIST;
 
   @Nullable
   @Override
@@ -54,7 +51,6 @@ public class PhoneticServiceFragment extends NameableFragment implements Phoneti
     new PhoneticPresenter(getContext(), this, SchedulerProvider.getInstance());
 
     phoneticSignFragment = new PhoneticSignFragment();
-    initView();
     return root;
   }
 
@@ -66,28 +62,14 @@ public class PhoneticServiceFragment extends NameableFragment implements Phoneti
 
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-    changeTopbar();
     presenter.load();
   }
 
-  private void changeTopbar() {
-    FragmentActivity activity = getActivity();
-    if (activity instanceof TopbarListener) {
-      ((TopbarListener) activity).onTopbarChange(topbar -> topbar.setTitle(NAME));
-    }
-  }
-
-  private void initView() {
-
-  }
-
   @Override
-  public void show(List<ResourcefulPhoneticSign> phoneticSigns) {
-    List<PhoneticSignAdapter> chain = new ArrayList<>();
-    phoneticSigns.stream().map(PhoneticSignAdapter::new).forEach(a -> a.addToChain(chain));
-    this.resourceChain = chain;
+  public void show(List<PhoneticSign> chain) {
+    this.chain = chain;
     listAdapter.notifyDataSetChanged();
-    Log.i(getTag(), "resource size: " + phoneticSigns.size());
+    Log.i(getTag(), "resource size: " + chain.size());
   }
 
   @Override
@@ -98,11 +80,6 @@ public class PhoneticServiceFragment extends NameableFragment implements Phoneti
   @Override
   public void setPresenter(PhoneticSignContract.Presenter presenter) {
     this.presenter = presenter;
-  }
-
-  @Override
-  public String name() {
-    return NAME;
   }
 
   public class ListItemViewHolder extends RecyclerView.ViewHolder {
@@ -127,7 +104,7 @@ public class PhoneticServiceFragment extends NameableFragment implements Phoneti
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder h, int position) {
-      PhoneticSignAdapter phonetic = resourceChain.get(position);
+      PhoneticSign phonetic = chain.get(position);
       ListItemViewHolder holder = (ListItemViewHolder) h;
       holder.phoneticCardShow.setText(phonetic.getResource().getShow());
       StackLabel tagLabels = holder.itemView.findViewById(R.id.tag_labels);
@@ -135,7 +112,7 @@ public class PhoneticServiceFragment extends NameableFragment implements Phoneti
       holder.itemView.setOnClickListener(v -> {
         phoneticSignFragment.changePhoneticSign(phonetic);
         getActivity().getSupportFragmentManager().beginTransaction()
-            .replace(R.id.container, phoneticSignFragment, phoneticSignFragment.getTag())
+            .replace(R.id.phonetic_sign_container, phoneticSignFragment, phoneticSignFragment.getTag())
             .addToBackStack(NAME)
             .commit();
       });
@@ -143,7 +120,7 @@ public class PhoneticServiceFragment extends NameableFragment implements Phoneti
 
     @Override
     public int getItemCount() {
-      return resourceChain.size();
+      return chain.size();
     }
   }
 }

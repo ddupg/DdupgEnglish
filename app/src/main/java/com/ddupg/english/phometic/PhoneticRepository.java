@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -53,12 +54,21 @@ public class PhoneticRepository {
         .map(r -> new ResourcefulPhoneticSign(r, this)).collect(Collectors.toList());
   }
 
-  public Flowable<List<ResourcefulPhoneticSign>> loadResourcefulPhoneticSigns() {
-    return Flowable.fromCallable(() -> resourcefulPhoneticSigns);
+  public Flowable<List<PhoneticSign>> loadResourcefulPhoneticSigns() {
+    return Flowable.fromCallable(() -> {
+      List<PhoneticSign> chain = new ArrayList<>();
+      resourcefulPhoneticSigns.stream().map(PhoneticSign::new).forEach(p -> p.addToChain(chain));
+      return chain;
+    });
   }
 
-  public List<ResourcefulPhoneticSign> filterByTag(String tag) {
-    return resourcefulPhoneticSigns.stream().filter(p -> p.getTags().contains(tag)).collect(Collectors.toList());
+  public Flowable<List<PhoneticSign>> filterByTag(String tag) {
+    return Flowable.fromCallable(() -> {
+      List<PhoneticSign> chain = new ArrayList<>();
+      resourcefulPhoneticSigns.stream()
+          .filter(p -> p.getTags().contains(tag)).map(PhoneticSign::new).forEach(p -> p.addToChain(chain));
+      return chain;
+    });
   }
 
   public List<String> convertTags(List<Integer> tagIds) {
@@ -71,5 +81,49 @@ public class PhoneticRepository {
     private Map<Integer, String> tags;
 
     private List<RawPhoneticSign> phonetic;
+  }
+
+  @Data
+  public static class RawPhoneticSign {
+
+    private int id;
+
+    private String show;
+
+    private String audio;
+
+    private String pic;
+
+    private String video;
+
+    private List<Integer> tags;
+  }
+
+  @Data
+  public static class ResourcefulPhoneticSign {
+
+    private RawPhoneticSign raw;
+
+    private PhoneticRepository repository;
+
+    public List<String> tags;
+
+    public ResourcefulPhoneticSign(RawPhoneticSign raw, PhoneticRepository repository) {
+      this.raw = raw;
+      this.repository = repository;
+      tags = repository.convertTags(raw.getTags());
+    }
+
+    public int getId() {
+      return raw.getId();
+    }
+
+    public String getShow() {
+      return raw.getShow();
+    }
+
+    public List<String> getTags() {
+      return tags;
+    }
   }
 }
